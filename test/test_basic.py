@@ -24,4 +24,9 @@ def test_render_wikklytext():
 
     assert content == '<h1 class="wikkly-h1">Hello</h1>'
 
+def test_config_default():
+    environ = {'tiddlyweb.config': {
+        'multirender.default': 'tiddlywebplugins.wikklytextrender'}}
+    content = render(tiddler, environ)
+    assert content == '<h1 class="wikkly-h1">Hello</h1>'
 

@@ -16,7 +16,9 @@ def render(tiddler, environ):
     Render TiddlyWiki wikitext in the provided
     tiddler to HTML.
     """
-    renderer_name = environ.get('tiddlyweb.render', DEFAULT_RENDERER)
+    config = environ.get('tiddlyweb.config', {})
+    default_renderer = config.get('multirender.default', DEFAULT_RENDERER)
+    renderer_name = environ.get('tiddlyweb.render', default_renderer)
     try:
         imported_module = __import__('tiddlyweb.wikitext.%s' % renderer_name,
                 {}, {}, ['render'])
