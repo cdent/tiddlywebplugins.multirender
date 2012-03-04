@@ -1,0 +1,22 @@
+A TiddlyWeb plugin that provides a mechanism to dispatch to one of 
+several wikitext rendering systems based on defined key in the WSGI
+environment.
+
+To use update tiddlywebconfig.py to include:
+
+    wikitext.default_renderer': 'tiddlywebplugins.multirender',
+    'wikitext.default_render_map': {
+        'text/x-tiddlywiki': 'tiddlywebplugins.multirender',
+    },
+
+By default the 'raw' rendering subsystem will be used, but if
+'tiddlyweb.wikirender' is set in environ, then the value of that 
+will be used as a renderer.
+
+The genesis of this plugin was needing to test multiple rendering
+systems, driven by user choices, on TiddlySpace.
+
+See also: http://tiddlyweb.com , http://tiddlyspace.com and
+http://github.com/cdent/tiddlywebplugins.multirender
+
+Copyright Chris Dent 2012, cdent@peermore.com
